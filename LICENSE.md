@@ -1,8 +1,3 @@
-# picar
-This is a project which allows you to control a remote controlled car with the help of an Raspberry Pi and Node.js.
-The full instructions can be found on this blog: https://picarsite.wordpress.com
-
-# License 
 The MIT License (MIT)
 
 Copyright (c) 2015 Adrian Przybyla and Michael Piela

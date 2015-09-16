@@ -1,10 +1,35 @@
+
+// The MIT License (MIT)
+
+// Copyright (c) 2015 Adrian Przybyla and Michael Piela
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+// Website: https://picarsite.wordpress.com
+
 // Load the http module to create an http server.
 var http = require('http'); 
 // Needed to set the gpio pins
 var gpio = require("pi-gpio");
 var url = require("url");
 var fs = require("fs");
-var piblaster = require('pi-servo-blaster.js');
+var piblaster = require('pi-blaster.js');
 
 var driveMiddle = 0.162;
 var maxLeft = -5;
@@ -49,7 +74,7 @@ function handler(req, res){
 	if(pathname == "/") {
         res.end(form);
     } else if (pathname == "/javascript.js") {
-        script = fs.readFileSync("/var/www/javascript.js", "utf8");
+        script = fs.readFileSync("/home/picar/javascript.js", "utf8");
         res.write(script);
 		res.end();
     }
@@ -174,7 +199,7 @@ function driveServo(y)
 	if(y < maxRight && y > maxLeft)
 	{
 		var servoResult = driveMiddle + 0.003 * y;
-		piblaster.setPwm(0, servoResult);
+		piblaster.setPwm(18, servoResult);
 	}
 }
 
@@ -186,5 +211,3 @@ http.createServer(handler).listen(8000, function(err){
     console.log("Server running at http://127.0.0.1:8000/ or http://localhost:8000/");
   };
 });
-
-// http://techslides.com/client-side-javascript-to-node-js
