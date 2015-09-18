@@ -2,6 +2,9 @@
 This is a project which allows you to control a remote controlled car with the help of an Raspberry Pi and Node.js.
 The full instructions can be found on this blog: https://picarsite.wordpress.com
 
+# Changelog
+You can find the changelog there: [Changelog](https://github.com/picarsite/picar/blob/master/CHANGELOG.md).
+
 # License 
 The MIT License (MIT)
 
